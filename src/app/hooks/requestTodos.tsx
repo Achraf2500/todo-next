@@ -4,9 +4,15 @@ import { useAuth } from '../context/AuthContext'
 import { db } from '../../../firebase'
 
 export default function useFetchTodos() {
+    interface Todo {
+        [key: number]: {
+            item: string; // Assuming 'item' is a string
+            done: boolean;
+        };
+    }
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [todos, setTodos] = useState(null)
+    const [error, setError] = useState('')
+    const [todos, setTodos] = useState<Todo>({})
 
     const { currentUser } = useAuth()
 

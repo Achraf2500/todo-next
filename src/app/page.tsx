@@ -21,6 +21,10 @@ export default function Home() {
     todoInput: string
   }
 
+  interface Todos {
+    [key: string]: any;
+  }
+
   const {
     register,
     handleSubmit,
@@ -43,7 +47,9 @@ export default function Home() {
   }
 
   const handleAddTodo =  async (data: Inputs) => {
-    const newKey = Object.keys(todos).length === 0 ? 1 : Math.max(...Object.keys(todos)) + 1
+    if(todos === null) return
+    const currentKeys = Object.keys(todos);
+    const newKey =currentKeys.length === 0 ? 1 : Math.max(...currentKeys.map((key) => parseInt(key, 10))) + 1;    
     setTodos({
       ...todos, [newKey]:
       {
@@ -67,9 +73,10 @@ export default function Home() {
   }
 
 
-  function handleDelete(todoKey) {
+  function handleDelete(todoKey:any) {
     return async () => {
-      const tempObj = { ...todos }
+      const tempObj:Todos = { ...todos }
+
       delete tempObj[todoKey]
 
       setTodos(tempObj)
@@ -84,13 +91,14 @@ export default function Home() {
   }
 
 
-  function handleDone(todoKey) {
+  function handleDone(todoKey:number) {
+    if(todos === null) return
     return async () => {
       const newKey = todoKey
       setTodos({
         ...todos, [newKey]: {
-          item: todos[todoKey].item,
-          done: !todos[todoKey].done
+          item: todos[todoKey]?.item,
+          done: !todos[todoKey]?.done
         }
       })
       const userRef = doc(db, 'users', currentUser.uid)
@@ -142,7 +150,7 @@ export default function Home() {
             <>
               {Object.keys(todos).map((todo, i) => {
                 return (
-                  <TodoItem key={i} todoKey={todo} handleDone={handleDone} todoItem={todos[todo]} handleDelete={handleDelete} />
+                  <TodoItem key={i} todoKey={todo} handleDone={handleDone} todoItem={todos[parseInt(todo)]} handleDelete={handleDelete} />
                 )
               })}
             </>

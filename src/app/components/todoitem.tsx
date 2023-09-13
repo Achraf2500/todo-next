@@ -3,6 +3,7 @@
 export default function TodoItem(props:any) {
 
     const { todoItem,todoKey, handleDelete, handleDone } = props
+    
     return (
         <li className="relative flex justify-between items-center p-3 border-[#E0E0E0] border-b-[1px]">
             <div className='flex items-center'>
