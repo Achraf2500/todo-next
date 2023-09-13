@@ -13,8 +13,8 @@ import Loading from './components/loading'
 import EmptyScreen from './components/empty'
 
 export default function Home() {
-
-  const { todos, setTodos, loading, error } = useFetchTodos()
+  const [loading, setLoading] = useState(true)
+  const { todos, setTodos, error } = useFetchTodos()
   const router = useRouter()
 
   interface Inputs {
@@ -24,6 +24,12 @@ export default function Home() {
   interface Todos {
     [key: string]: any;
   }
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
+  }, [])
 
   const {
     register,
