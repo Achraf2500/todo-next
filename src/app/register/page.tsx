@@ -21,19 +21,23 @@ export default function Register() {
         email: string
         password: string
     }
+
+    // instence of useAuth hook for check if user already login (currentUser)
     const { signup, currentUser } = useAuth()
 
     if (currentUser != undefined) {
         router.push('/')
     }
 
+    // add preloader (dissmes loader after 1s)
     useEffect(()=>{
         setTimeout(() => {
           setLoading(false)
         }, 1000);
       }, [])
+    
 
-
+    // form validation 
     const {
         register,
         handleSubmit,
@@ -42,11 +46,13 @@ export default function Register() {
         criteriaMode: "all",
     })
 
-
+    // function for toogle show/hide password
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
     }
 
+
+    // when submit form start call signup function from AuthContext
     const onSubmit = async (data: Inputs) => {
         setError('')
         setLoading(true)

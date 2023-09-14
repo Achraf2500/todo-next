@@ -12,7 +12,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    // firebase register new user using (firebase authentication) add catch possible errors
     const signup = async (email, password) => {
         try {
             return await createUserWithEmailAndPassword(auth, email, password)
@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
             return JSON.stringify({ message: errorMessage });
         }
     }
-
+    // login user using (firebase authentication) add catch (email exists error)
     const login = async (email, password) => {
         try {
             return await signInWithEmailAndPassword(auth, email, password)
@@ -37,11 +37,12 @@ export function AuthProvider({ children }) {
 
     }
 
+    // logout user
     const logout = async () => {
         return await signOut(auth)
     }
 
-
+    // add useEffect hook and listener for any Auth State Changed
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async user => {
             setCurrentUser(user)
@@ -50,6 +51,7 @@ export function AuthProvider({ children }) {
         return unsubscribe
     }, [])
 
+    // export data and functions
     const value = {
         currentUser,
         login,

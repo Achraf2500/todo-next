@@ -6,8 +6,8 @@ import { db } from '../../../firebase'
 export default function useFetchTodos() {
     interface Todo {
         [key: number]: {
-            item: string; // Assuming 'item' is a string
-            done: boolean;
+            item: string
+            done: boolean
         };
     }
     const [loading, setLoading] = useState(true)
@@ -15,7 +15,7 @@ export default function useFetchTodos() {
     const [todos, setTodos] = useState<Todo>({})
 
     const { currentUser } = useAuth()
-
+    // add use effect hook "fetchData" run when use fetch todos hook called
     useEffect(() => {
         async function fetchData() {
             try {

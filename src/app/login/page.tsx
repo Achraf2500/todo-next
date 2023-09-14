@@ -18,19 +18,22 @@ export default function Login() {
     email: string
     password: string
   }
-
+  
+  // instence of useAuth hook for check if user already login (currentUser)
   const { login, currentUser } = useAuth()
 
   if (currentUser != undefined) {
     router.push('/')
   }
 
+  // add preloader
   useEffect(()=>{
     setTimeout(() => {
       setLoading(false)
     }, 1000);
   }, [])
 
+  // use form validation
   const {
     register,
     handleSubmit,
@@ -39,10 +42,13 @@ export default function Login() {
     criteriaMode: "all",
   })
 
+  // function for toogle show/hide password
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
 
+
+  // when submit form start call login function from AuthContext
   const onSubmit = async (data: Inputs) => {
     setError('')
     setLoading(true)
