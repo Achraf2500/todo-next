@@ -24,7 +24,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ✅ Login / Register using (email/password).<br>
 ✅ Form validation (realtime) with errors.<br>
 ✅ Add middleware to protect home router (guest).<br>
-✅ Dashboard (user can add/remove todo) and save data on realtime database.<br>
+✅ Dashboard (user can add/remove/change state todo) and save data on realtime database.<br>
 ✅ Add smooth loader for great UX (user experience).<br>
 ✅ Clean code and easy for reading/update/fix.<br>
 ✅ Deploy app on vercel ([https://todo-next-ruddy.vercel.app/login])<br>
