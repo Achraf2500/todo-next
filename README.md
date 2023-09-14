@@ -1,3 +1,4 @@
+## Todo App
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -13,10 +14,21 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or live version [https://todo-next-ruddy.vercel.app/login]
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Features
+✅ Login / Register using (email/password).<br>
+✅ Form validation (realtime) with errors.<br>
+✅ Add middleware to protect home router (guest).<br>
+✅ Dashboard (user can add/remove todo) and save data on realtime database.<br>
+✅ Add smooth loader for great UX (user experience).<br>
+✅ Clean code and easy for reading/update/fix.<br>
+✅ Deploy app on vercel ([https://todo-next-ruddy.vercel.app/login])<br>
+
 
 ## Learn More
 
