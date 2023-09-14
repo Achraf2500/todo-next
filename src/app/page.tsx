@@ -25,7 +25,7 @@ export default function Home() {
     [key: string]: any;
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 1000);
@@ -52,10 +52,10 @@ export default function Home() {
     router.push('/login')
   }
 
-  const handleAddTodo =  async (data: Inputs) => {
-    if(todos === null) return
+  const handleAddTodo = async (data: Inputs) => {
+    if (todos === null) return
     const currentKeys = Object.keys(todos);
-    const newKey =currentKeys.length === 0 ? 1 : Math.max(...currentKeys.map((key) => parseInt(key, 10))) + 1;    
+    const newKey = currentKeys.length === 0 ? 1 : Math.max(...currentKeys.map((key) => parseInt(key, 10))) + 1;
     setTodos({
       ...todos, [newKey]:
       {
@@ -79,9 +79,9 @@ export default function Home() {
   }
 
 
-  function handleDelete(todoKey:any) {
+  function handleDelete(todoKey: any) {
     return async () => {
-      const tempObj:Todos = { ...todos }
+      const tempObj: Todos = { ...todos }
 
       delete tempObj[todoKey]
 
@@ -97,8 +97,8 @@ export default function Home() {
   }
 
 
-  function handleDone(todoKey:number) {
-    if(todos === null) return
+  function handleDone(todoKey: number) {
+    if (todos === null) return
     return async () => {
       const newKey = todoKey
       setTodos({
@@ -142,13 +142,13 @@ export default function Home() {
                 <circle cx="7" cy="7" r="6.5" stroke="#E0E0E0" />
               </svg>
             </div>
-            
+
           </form>
           <ErrorMessage
-              errors={errors}
-              name="todoInput"
-              render={({ message }) => <p className="text-danger-800 text-sm py-2 px-3">{message}</p>}
-            />
+            errors={errors}
+            name="todoInput"
+            render={({ message }) => <p className="text-danger-800 text-sm py-2 px-3">{message}</p>}
+          />
         </div>
 
         <ul className="w-4/6 bg-white rounded-md shadow-md mt-6">
